@@ -3,7 +3,10 @@ from .models import Post
 from .forms import PostForm
 
 def main(request):
-    return render(request, 'posts/main.html')
+    context = {
+        'posts': Post.objects.all()  #.order_by('-created_at')
+    }
+    return render(request, 'posts/main.html', context)
 
 def new(request):
     form = PostForm()
@@ -18,3 +21,11 @@ def create(request):
         if form.is_valid():
             form.save()
         return redirect('main')
+
+
+def show(request, post_id):
+    post = Post.objects.get(pk=post_id)
+    context = {
+        'post': post
+    }
+    return render(request, 'posts/show.html', context)
