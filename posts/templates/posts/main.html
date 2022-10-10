@@ -2,7 +2,6 @@
 {% load static %}
 
 {% block content %}
-{% include 'share/_navbar.html' %}
 
 <h1>
   Hello Django!
@@ -11,6 +10,4 @@
 <a href='{% url "lovely:first" %}'>first</a>
 <a href='{% url "lovely:second" %}'>second</a>
 <a href='{% url "lovely:third" %}'>third</a>
-
-<img src='{% static "img/uhm.jpeg" %}' alt="uhm">
 {% endblock %}
